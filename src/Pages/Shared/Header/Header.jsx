@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto mb-7">
       <div className="flex justify-between items-center py-10">
         <div className="flex items-center gap-2">
           <FaMapMarkerAlt className="text-4xl text-blue-400" />
