@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Auth/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -31,11 +31,17 @@ const Register = () => {
       .then((result) => {
         const registerUser = result.user;
         console.log(registerUser);
+        updateUser(name, url)
+            .then()
+            .catch(error => setError(error.message))
         setSuccess("Successfully Registered");
+        form.reset();
       })
       .catch((error) => {
         setError(error.message);
       });
+
+
   };
 
   return (

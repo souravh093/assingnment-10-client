@@ -6,7 +6,11 @@ import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 import { AuthContext } from "../../../Auth/AuthProvider";
 
 const Header = () => {
-  const {user} = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logoutUser().then().catch();
+  };
   return (
     <div className="max-w-7xl mx-auto mb-7">
       <div className="flex justify-between items-center py-10">
@@ -20,24 +24,38 @@ const Header = () => {
         <div>
           <img src={logo} alt="" />
         </div>
-          <Link to="/contact" className="flex items-center gap-2 border-2 py-2 px-5 rounded-md border-blue-400">
-            <FaEnvelope className="text-blue-400" />
-            <p className="text-lg font-semibold">GET IN TOUCH</p>
-          </Link>
+        <Link
+          to="/contact"
+          className="flex items-center gap-2 border-2 py-2 px-5 rounded-md border-blue-400"
+        >
+          <FaEnvelope className="text-blue-400" />
+          <p className="text-lg font-semibold">GET IN TOUCH</p>
+        </Link>
       </div>
 
-        <hr className="w-full pb-5" />
+      <hr className="w-full pb-5" />
       <nav className="flex items-center justify-between text-lg">
         <div className="flex gap-10">
           <ActiveLink to="/">Home</ActiveLink>
           <ActiveLink to="/blog">Blog</ActiveLink>
           <ActiveLink to="/contact">Contact us</ActiveLink>
         </div>
-        <div className="flex items-center gap-5">
-            <FaSearch className="text-2xl" />
-            {
-              user ? <Link>Logout</Link> : <ActiveLink to="/login">Login</ActiveLink>
-            }
+        <div>
+          {user ? (
+            <div  className="flex items-center gap-5">
+              <div className="flex items-center gap-2">
+                <h2>{user.displayName}</h2>
+                <img
+                  className="w-10 h-10 rounded-full object-cover"
+                  src={user.photoURL}
+                  alt=""
+                />
+              </div>
+              <Link onClick={handleLogout}>Logout</Link>
+            </div>
+          ) : (
+            <ActiveLink to="/login">Login</ActiveLink>
+          )}
         </div>
       </nav>
     </div>

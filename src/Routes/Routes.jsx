@@ -7,6 +7,7 @@ import Blog from "../Pages/Blog/Blog";
 import LazyLoading from "../components/LazyLoading/LazyLoading";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -16,17 +17,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/chefinfo"),
+        loader: () => fetch("https://assignment-10-server-souravofficialweb-gmailcom.vercel.app/chefinfo"),
       },
       {
         path: "/chef/:id",
         element: (
           <Suspense fallback={<LazyLoading />}>
-            <ChefDetails />
+            <PrivateRoutes><ChefDetails /></PrivateRoutes>
           </Suspense>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/chefinfo/${params.id}`),
+          fetch(`https://assignment-10-server-souravofficialweb-gmailcom.vercel.app/chefinfo/${params.id}`),
       },
       {
         path: "/blog",

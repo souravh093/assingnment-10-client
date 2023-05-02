@@ -1,6 +1,6 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 import React, { lazy, Suspense } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import LazyLoading from "../../components/LazyLoading/LazyLoading";
 const ChefInfo = lazy(() => import("./ChefInfo/ChefInfo"));
 

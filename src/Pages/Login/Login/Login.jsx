@@ -1,11 +1,18 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Auth/AuthProvider";
 
 const Login = () => {
-  const { loginUser, googleSignIn } = useContext(AuthContext);
+  const { loginUser, googleSignIn, githubSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
   const handleLogin = (event) => {
     setError("");
@@ -20,6 +27,8 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         setSuccess("Successfully Logged");
+        form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -30,12 +39,22 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         const googleUser = result.user;
-        console.log(googleUser);
         setSuccess("Successfully Logged with Google");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
       });
+  };
+
+  const handleGithubSignIN = () => {
+    githubSignIn()
+      .then((result) => {
+        const githubUser = result.user;
+        setSuccess("Successfully Logged with GitHub");
+        navigate(from, { replace: true });
+      })
+      .catch();
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-177px)] bg-gray-100">
@@ -81,7 +100,10 @@ const Login = () => {
           >
             Sign In with Google
           </button>
-          <button className="px-4 py-2 text-white bg-gray-700 rounded-lg shadow hover:bg-gray-800">
+          <button
+            onClick={handleGithubSignIN}
+            className="px-4 py-2 text-white bg-gray-700 rounded-lg shadow hover:bg-gray-800"
+          >
             Sign In with Github
           </button>
         </div>
