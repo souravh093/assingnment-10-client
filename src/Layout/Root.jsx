@@ -3,6 +3,7 @@ import Header from '../Pages/Shared/Header/Header';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Pages/Shared/Footer/Footer';
 import "../index.css"
+import { Toaster } from 'react-hot-toast';
 
 const Root = () => {
     return (
@@ -10,6 +11,7 @@ const Root = () => {
             <Header />
             <Outlet />
             <Footer />
+            <Toaster />
         </div>
     );
 };
