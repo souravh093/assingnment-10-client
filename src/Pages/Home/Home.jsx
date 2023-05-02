@@ -1,7 +1,8 @@
 import { Player } from "@lottiefiles/react-lottie-player";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { useLoaderData } from "react-router-dom";
-import ChefInfo from "./ChefInfo/ChefInfo";
+import LazyLoading from "../../components/LazyLoading/LazyLoading";
+const ChefInfo = lazy(() => import("./ChefInfo/ChefInfo"));
 
 const Home = () => {
   const chefInfo = useLoaderData();
@@ -38,7 +39,9 @@ const Home = () => {
         </div>
         <div className="max-w-7xl grid grid-cols-3 mx-auto gap-10">
           {chefInfo.map((chef) => (
-            <ChefInfo key={chef.id} chef={chef} />
+            <Suspense fallback={<LazyLoading />}>
+              <ChefInfo key={chef.id} chef={chef} />
+            </Suspense>
           ))}
         </div>
       </div>
