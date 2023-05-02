@@ -4,7 +4,9 @@ import Root from "../Layout/Root";
 import Home from "../Pages/Home/Home";
 const ChefDetails = lazy(() => import("../Pages/ChefDetails/ChefDetails"));
 import Blog from "../Pages/Blog/Blog";
-import Loader from "../components/Loader/Loader";
+import LazyLoading from "../components/LazyLoading/LazyLoading";
+import Login from "../Pages/Login/Login/Login";
+import Register from "../Pages/Login/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/chef/:id",
         element: (
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<LazyLoading />}>
             <ChefDetails />
           </Suspense>
         ),
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
         path: "/blog",
         element: <Blog />,
       },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/register',
+        element: <Register />
+      }
     ],
   },
 ]);

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaMapMarkerAlt, FaEnvelope, FaSearch } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-router-dom";
 import ActiveLink from "../../../components/ActiveLink/ActiveLink";
+import { AuthContext } from "../../../Auth/AuthProvider";
 
 const Header = () => {
+  const {user} = useContext(AuthContext);
   return (
     <div className="max-w-7xl mx-auto mb-7">
       <div className="flex justify-between items-center py-10">
@@ -33,7 +35,9 @@ const Header = () => {
         </div>
         <div className="flex items-center gap-5">
             <FaSearch className="text-2xl" />
-            <ActiveLink to="/login">Login</ActiveLink>
+            {
+              user ? <Link>Logout</Link> : <ActiveLink to="/login">Login</ActiveLink>
+            }
         </div>
       </nav>
     </div>
