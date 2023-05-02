@@ -8,7 +8,9 @@ const Recipe = ({ recipe }) => {
 
   const showToast = () => {
     setDisable(true);
-    toast.success(`${title} is your favorite recipe`);
+    if(!disable) {
+        toast.success(`${title} is your favorite recipe`);
+    }
   };
   return (
     <div className="bg-white hover:shadow-md w-full rounded-lg border-2 border-blue-400 p-16">

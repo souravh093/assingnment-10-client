@@ -2,6 +2,7 @@ import React from "react";
 import { FaMapMarkerAlt, FaEnvelope, FaSearch } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-router-dom";
+import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 
 const Header = () => {
   return (
@@ -26,13 +27,13 @@ const Header = () => {
         <hr className="w-full pb-5" />
       <nav className="flex items-center justify-between text-lg">
         <div className="flex gap-10">
-          <Link to="/">Home</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/blog">Contact us</Link>
+          <ActiveLink to="/">Home</ActiveLink>
+          <ActiveLink to="/blog">Blog</ActiveLink>
+          <ActiveLink to="/contact">Contact us</ActiveLink>
         </div>
         <div className="flex items-center gap-5">
             <FaSearch className="text-2xl" />
-            <Link to="/login">Login</Link>
+            <ActiveLink to="/login">Login</ActiveLink>
         </div>
       </nav>
     </div>
