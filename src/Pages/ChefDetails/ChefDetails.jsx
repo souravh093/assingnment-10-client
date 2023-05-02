@@ -2,6 +2,7 @@ import React from "react";
 import { FaThumbsUp } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import bannerDetails from "../../assets/bannerDetails.jpg";
+import Recipe from "./Recipe/Recipe";
 
 const ChefDetails = () => {
   const chefDetails = useLoaderData();
@@ -13,6 +14,7 @@ const ChefDetails = () => {
     numRecipes,
     likes,
     shortDescription,
+    recipes,
   } = chefDetails;
   return (
     <div>
@@ -47,6 +49,22 @@ const ChefDetails = () => {
             </figure>
           </div>
         </div>
+      </div>
+
+      <div className="mt-20">
+      <div className="flex flex-col items-center text-center mb-14">
+          <h2 className="text-5xl font-bold mb-5 text-gray-700">TOP RECIPES</h2>
+          <p className="max-w-3xl text-gray-500">
+            An executive chef is the top chef in a restaurant or culinary
+            establishment, responsible for overseeing the entire kitchen
+            operation and creating the menu.
+          </p>
+        </div>
+        <dir className="grid grid-cols-3 gap-10 max-w-7xl mx-auto ">
+          {recipes.map((recipe, index) => (
+            <Recipe key={index} recipe={recipe} />
+          ))}
+        </dir>
       </div>
     </div>
   );
