@@ -3,19 +3,24 @@ import { FaArrowRight } from "react-icons/fa";
 import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
+const options = {
+  orientation: 'landscape',
+  unit: 'in',
+  format: [16,12]
+};
 
 const Blog = () => {
   return (
     <div>
       <header>
-        <div class="bg-blue-500 text-white py-4">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center">
-            <h1 class="text-3xl font-bold">Download our FAQ info </h1>
-            <Pdf targetRef={ref} filename="faq.pdf">
+        <div className="bg-blue-500 text-white py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center">
+            <h1 className="text-3xl font-bold">Download our FAQ info </h1>
+            <Pdf options={options} targetRef={ref} filename="faq.pdf">
               {({ toPdf }) => (
                 <button
                   onClick={toPdf}
-                  class="ml-4 inline-flex gap-2 items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  className="ml-4 inline-flex gap-2 items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
                   <FaArrowRight />
                   Download
@@ -25,20 +30,20 @@ const Blog = () => {
           </div>
         </div>
       </header>
-      <section ref={ref} class="py-10 bg-white sm:py-16 lg:py-24">
-        <div class="max-w-7xl px-4 mx-auto sm:px-6">
-          <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+      <section ref={ref} className="py-10 bg-white sm:py-16 lg:py-24">
+        <div className="max-w-7xl px-4 mx-auto sm:px-6">
+          <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
             Frequently Asked Questions
           </h2>
 
-          <div class="flow-root mt-12 sm:mt-16">
-            <div class="divide-y divide-gray--200 -my-9">
-              <div class="py-9">
-                <p class="text-xl font-semibold text-black">
+          <div className="flow-root mt-12 sm:mt-16">
+            <div className="divide-y divide-gray--200 -my-9">
+              <div className="py-9">
+                <p className="text-xl font-semibold text-black">
                   What is the difference between uncontrolled and controlled
                   components?
                 </p>
-                <p class="mt-3 text-base text-gray-600">
+                <p className="mt-3 text-base text-gray-600">
                   The uncontrolled components meaning that directly connect with
                   the real dom it have no controlled to the parent components.
                   The uncontrolled components like any component that using to
@@ -49,11 +54,11 @@ const Blog = () => {
                 </p>
               </div>
 
-              <div class="py-9">
-                <p class="text-xl font-semibold text-black">
+              <div className="py-9">
+                <p className="text-xl font-semibold text-black">
                   How to validate React props using PropTypes?
                 </p>
-                <p class="mt-3 text-base text-gray-600">
+                <p className="mt-3 text-base text-gray-600">
                   Prop are using to pass data to the other components it is very
                   useful to pass through any type of data. We want to pass data
                   parent component to the child components, we need to validate
@@ -66,11 +71,11 @@ const Blog = () => {
                 </p>
               </div>
 
-              <div class="py-9">
-                <p class="text-xl font-semibold text-black">
+              <div className="py-9">
+                <p className="text-xl font-semibold text-black">
                   What is the difference between nodejs and express js.
                 </p>
-                <p class="mt-3 text-base text-gray-600">
+                <p className="mt-3 text-base text-gray-600">
                   Node js are mainly using to backend to serve the data this is
                   the javascript server side language to work in backend. Using
                   node js we can do any thing in backend like create api other
@@ -81,11 +86,11 @@ const Blog = () => {
                   to easy our work.
                 </p>
               </div>
-              <div class="py-9">
-                <p class="text-xl font-semibold text-black">
+              <div className="py-9">
+                <p className="text-xl font-semibold text-black">
                   What is a custom hook, and why will you create a custom hook?
                 </p>
-                <p class="mt-3 text-base text-gray-600">
+                <p className="mt-3 text-base text-gray-600">
                   A custom hook means you can create a hook you can use any time
                   anywhere we want. Main reason to create a custom hook is reuse
                   stateful logic. A custom hook have some function to do the
