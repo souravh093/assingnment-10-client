@@ -2,6 +2,8 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import React, { lazy, Suspense } from "react";
 import { useLoaderData } from "react-router-dom";
 import LazyLoading from "../../components/LazyLoading/LazyLoading";
+import Offer from "./Offer/Offer";
+import ChooseUs from "./ChooseUs/ChooseUs";
 const ChefInfo = lazy(() => import("./ChefInfo/ChefInfo"));
 
 const Home = () => {
@@ -11,15 +13,21 @@ const Home = () => {
       <div className="bg-red-50">
         <div className="max-w-7xl mx-auto grid grid-cols-2 items-center">
           <div>
-            <p className="font-semibold"><span className="text-4xl text-yellow-500">W</span>elcome</p>
+            <p className="font-semibold">
+              <span className="text-4xl text-yellow-500">W</span>elcome
+            </p>
             <h2 className="font-bold text-7xl text-blue-400">SPICE ROUTE</h2>
             <h2 className="font-bold text-3xl my-4 max-w-xl">
               Discover Delicious Chef-Approved Recipes
             </h2>
             <p className="font-medium text-2xl text-gray-500 mb-8 tracking-widest max-w-md">
-            A chef is a professional cook and tradesman who is proficient in all aspects of food preparation
+              A chef is a professional cook and tradesman who is proficient in
+              all aspects of food preparation
             </p>
-            <a href="#chefs" className="bg-white text-blue-500 font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg">
+            <a
+              href="#chefs"
+              className="bg-white text-blue-500 font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg"
+            >
               See Our Chefs
             </a>
           </div>
@@ -40,12 +48,21 @@ const Home = () => {
         </div>
         <div id="chefs" className="max-w-7xl grid grid-cols-3 mx-auto gap-10">
           {chefInfo.map((chef) => (
-            <Suspense  key={chef.id}  fallback={<LazyLoading />}>
+            <Suspense key={chef.id} fallback={<LazyLoading />}>
               <ChefInfo chef={chef} />
             </Suspense>
           ))}
         </div>
       </div>
+
+      <div className="mt-20">
+        <Offer />
+      </div>
+
+      <div className="mb-20 mt-20">
+        <ChooseUs />
+      </div>
+
     </div>
   );
 };
