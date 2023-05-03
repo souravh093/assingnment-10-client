@@ -10,15 +10,15 @@ import choose from "../../../assets/choose.jpg";
 const ChooseUs = () => {
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col items-center text-center mb-14">
-        <h2 className="text-5xl font-bold mb-5 text-gray-700">WHY CHOOSE US</h2>
+      <div className="flex flex-col px-10 md:px-0 items-center text-center mb-14">
+        <h2 className="md:text-5xl text-2xl font-bold mb-5 text-gray-700">WHY CHOOSE US</h2>
         <p className="max-w-3xl text-gray-500">
           An executive chef is the top chef in a restaurant or culinary
           establishment, responsible for overseeing the entire kitchen operation
           and creating the menu.
         </p>
       </div>
-      <div className="grid grid-cols-3 items-center">
+      <div className="grid md:grid-cols-3 items-center">
         <div>
           <div className="flex items-center gap-5 flex-col justify-center mb-5 border-b-2 px-10 py-10">
             <FaThumbsUp className="text-5xl text-blue-400" />

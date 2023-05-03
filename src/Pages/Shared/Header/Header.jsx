@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { FaMapMarkerAlt, FaEnvelope, FaSearch } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import { FaMapMarkerAlt, FaEnvelope, FaSearch, FaBars } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-router-dom";
 import ActiveLink from "../../../components/ActiveLink/ActiveLink";
@@ -12,8 +12,8 @@ const Header = () => {
     logoutUser().then().catch();
   };
   return (
-    <div className="max-w-7xl mx-auto mb-7">
-      <div className="flex justify-between items-center py-10">
+    <div className="max-w-7xl mx-auto">
+      <div className="flex flex-col gap-2 md:gap-0 md:flex-row justify-between items-center py-10">
         <div className="flex items-center gap-2">
           <FaMapMarkerAlt className="text-4xl text-blue-400" />
           <div>
@@ -33,16 +33,44 @@ const Header = () => {
         </Link>
       </div>
 
-      <hr className="w-full pb-5" />
-      <nav className="flex items-center justify-between text-lg">
-        <div className="flex gap-10">
-          <ActiveLink to="/">Home</ActiveLink>
-          <ActiveLink to="/blog">Blog</ActiveLink>
-          <ActiveLink to="/contact">Contact us</ActiveLink>
+      <hr className="w-full" />
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <ActiveLink to="/">Home</ActiveLink>
+              <ActiveLink to="/blog">Blog</ActiveLink>
+              <ActiveLink to="/contact">Contact us</ActiveLink>
+            </ul>
+          </div>
+          <div className="md:flex hidden gap-10">
+              <ActiveLink to="/">Home</ActiveLink>
+              <ActiveLink to="/blog">Blog</ActiveLink>
+              <ActiveLink to="/contact">Contact us</ActiveLink>
+            </div>
         </div>
-        <div>
+        <div className="navbar-end">
           {user ? (
-            <div  className="flex items-center gap-5">
+            <div className="flex items-center gap-5">
               <div className="flex items-center gap-2">
                 <h2>{user.displayName}</h2>
                 <img
@@ -51,13 +79,13 @@ const Header = () => {
                   alt=""
                 />
               </div>
-              <Link onClick={handleLogout}>Logout</Link>
+              <Link  onClick={handleLogout}>Logout</Link>
             </div>
           ) : (
             <ActiveLink to="/login">Login</ActiveLink>
           )}
         </div>
-      </nav>
+      </div>
     </div>
   );
 };

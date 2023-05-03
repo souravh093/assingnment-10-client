@@ -3,13 +3,13 @@ import banner2 from "../../../assets/banner2.jpg";
 
 const Offer = () => {
   return (
-    <div className="bg-cover" style={{ backgroundImage: `url(${banner2})` }}>
+    <div className="bg-cover px-10 md:px-0" style={{ backgroundImage: `url(${banner2})` }}>
       <div className="max-w-7xl mx-auto py-20">
-        <h2 className="mb-6 uppercase text-7xl font-bold text-gray-200 ">
+        <h2 className="mb-6 uppercase text-3xl md:text-7xl font-bold text-gray-200 ">
           Spacial Recipe
         </h2>
         <h2 className="uppercase text-2xl flex gap-3 items-center text-gray-100">
-          <span className="text-7xl shadow-xl border-2 border-red-900 text-white rounded-md bg-red-500  py-3 px-10 font-bold">
+          <span className="md:text-7xl shadow-xl border-2 border-red-900 text-white rounded-md bg-red-500  py-3 px-10 font-bold">
             -20%
           </span>
           off This recipe
