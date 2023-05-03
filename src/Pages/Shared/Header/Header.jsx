@@ -59,27 +59,26 @@ const Header = () => {
             >
               <ActiveLink to="/">Home</ActiveLink>
               <ActiveLink to="/blog">Blog</ActiveLink>
-              <ActiveLink to="/contact">Contact us</ActiveLink>
             </ul>
           </div>
           <div className="md:flex hidden gap-10">
-              <ActiveLink to="/">Home</ActiveLink>
-              <ActiveLink to="/blog">Blog</ActiveLink>
-              <ActiveLink to="/contact">Contact us</ActiveLink>
-            </div>
+            <ActiveLink to="/">Home</ActiveLink>
+            <ActiveLink to="/blog">Blog</ActiveLink>
+          </div>
         </div>
         <div className="navbar-end">
           {user ? (
             <div className="flex items-center gap-5">
               <div className="flex items-center gap-2">
-                <h2>{user.displayName}</h2>
-                <img
-                  className="w-10 h-10 rounded-full object-cover"
-                  src={user.photoURL}
-                  alt=""
-                />
+                <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                  <img
+                    className="w-10 h-10 rounded-full object-cover"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                </div>
               </div>
-              <Link  onClick={handleLogout}>Logout</Link>
+              <Link onClick={handleLogout}>Logout</Link>
             </div>
           ) : (
             <ActiveLink to="/login">Login</ActiveLink>

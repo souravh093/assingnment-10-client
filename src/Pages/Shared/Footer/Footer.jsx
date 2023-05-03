@@ -8,9 +8,9 @@ const Footer = () => {
       <div>
         <img src={logo} alt="" />
         <p>
-          ACME Industries Ltd.
+          SPICE Route company LTD
           <br />
-          Providing reliable tech since 1992
+          Providing reliable tech since 2010
         </p>
       </div>
       <div>
